@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 Route::middleware(['auth'])->group(function () {
     Route::resource('items', ItemController::class);
     Route::resource('categories', CategoryController::class);
